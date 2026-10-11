@@ -10,5 +10,7 @@ package exercises.ex02_vat
   * Hint: lesson 1 shows a function that returns a value.
   */
 object Vat {
-  def vatOf(net: BigDecimal, percent: Int): BigDecimal = ???
+  def vatOf(net: BigDecimal, percent: Int): BigDecimal =
+    (net * percent / 100).setScale(2, BigDecimal.RoundingMode.HALF_UP)
+
 }

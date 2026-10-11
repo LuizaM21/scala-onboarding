@@ -11,5 +11,8 @@ import java.time.LocalDate
   * Hint: lesson 3 uses the same rule on `Invoice`.
   */
 object Due {
-  def isOverdue(due: LocalDate, today: LocalDate): Boolean = ???
+  def isOverdue(due: LocalDate, today: LocalDate): Boolean =
+     if due.isBefore(today) then true
+      else if due.equals(today) then false
+        else false
 }
