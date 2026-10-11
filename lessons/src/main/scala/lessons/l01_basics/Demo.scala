@@ -32,7 +32,7 @@ object Demo {
     val compare1 = 3
     val compare2 = 7
     println(s"The greater number between $compare1 and $compare2 is ${MyBasics.maxValue(3, 7)}")
-    val testNumber = 7
+    val testNumber = "7"
     println(s"Is the number $testNumber even or not: ${MyBasics.isEven(testNumber)}")
     val score = 90
     println(s"The obtained score  of $score is ${MyBasics.grade(score)}")

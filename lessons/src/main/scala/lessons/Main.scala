@@ -34,7 +34,7 @@ object Main {
           case Some((_, (_, run))) => run()
           case None =>
             println(s"Unknown lesson: $raw")
-            println("Use a number from 1 to 6.")
+            println("Use a number from 1 to 7.")
         }
     }
   }
