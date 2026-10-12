@@ -13,6 +13,7 @@ object Basics {
   /** `s"..."` is string interpolation. `$name` is replaced by the value. */
   def greet(name: String): String = s"Hello, $name"
 
+
   def add(a: Int, b: Int): Int = a + b
 
   /** `if` returns a String here. Every branch has the same type. */

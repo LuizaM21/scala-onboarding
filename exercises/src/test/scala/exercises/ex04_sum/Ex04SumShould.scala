@@ -2,24 +2,10 @@ package exercises.ex04_sum
 
 class Ex04SumShould extends munit.FunSuite {
   test("sum an empty list as 0.00") {
-    // execute
-
-    val sum = Totals.sumAmounts(Nil)
-
-    // verify
-
-    assertEquals(sum, BigDecimal("0.00"))
-  }
+    assertEquals(Totals.sumAmounts(Nil), BigDecimal("0.00"))}
 
   test("sum a single amount") {
-    // execute
-
-    val sum = Totals.sumAmounts(List(BigDecimal("10.50")))
-
-    // verify
-
-    assertEquals(sum, BigDecimal("10.50"))
-  }
+    assertEquals(Totals.sumAmounts(List(BigDecimal("10.50"))), BigDecimal("10.50"))}
 
   test("sum several amounts") {
     // setup

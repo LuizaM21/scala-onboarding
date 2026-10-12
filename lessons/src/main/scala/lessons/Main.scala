@@ -15,7 +15,8 @@ object Main {
     3 -> ("case classes and traits — Money, Invoice, equality, copy", () => TypesDemo.run()),
     4 -> ("errors — Option, Either, Try, validation", () => ErrorsDemo.run()),
     5 -> ("invoice report — CSV, rates, totals", () => ReportDemo.run()),
-    6 -> ("how tests work — MUnit, assert, intercept", () => TestsDemo.run())
+    6 -> ("how tests work — MUnit, assert, intercept", () => TestsDemo.run()),
+    7 -> ("Practice for lesson 1", () => BasicsDemo.runMyBasics())
   )
 
   def main(args: Array[String]): Unit = {
@@ -33,7 +34,7 @@ object Main {
           case Some((_, (_, run))) => run()
           case None =>
             println(s"Unknown lesson: $raw")
-            println("Use a number from 1 to 6.")
+            println("Use a number from 1 to 7.")
         }
     }
   }

@@ -9,5 +9,6 @@ package exercises.ex04_sum
   * Hint: lesson 2 does this in `Collections.total`.
   */
 object Totals {
-  def sumAmounts(amounts: List[BigDecimal]): BigDecimal = ???
+  def sumAmounts(amounts: List[BigDecimal]): BigDecimal =
+    amounts.foldLeft(BigDecimal("0.00"))(_ + _).setScale(2, BigDecimal.RoundingMode.HALF_UP)
 }
