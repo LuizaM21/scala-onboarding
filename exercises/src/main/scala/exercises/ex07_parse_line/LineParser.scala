@@ -1,5 +1,7 @@
 package exercises.ex07_parse_line
 
+import scala.util.Try
+
 /** One valid CSV row. Do not change this shape. The tests build it. */
 case class CsvLine(number: String, supplier: String, currency: String, total: BigDecimal)
 
@@ -20,5 +22,18 @@ case class CsvLine(number: String, supplier: String, currency: String, total: Bi
   * Hint: lesson 4 shows `Either`, `Right`, and `Left`.
   */
 object LineParser {
-  def parse(line: String): Either[String, CsvLine] = ???
+  def parse(line: String): Either[String, CsvLine] =
+    //split the string based on the present comma and trim empty spaces 
+    line.split(",", -1).map(_.trim) match
+      case Array(number, supplier, currency, totalText) =>
+        if number.isEmpty then Left("number is blank")
+        else
+          Try(BigDecimal(totalText)).toOption match
+            case None => Left("total is not a number")
+            case Some(total) => Right(CsvLine(number,
+                                              supplier,
+                                              currency,
+                                              total.setScale(2, BigDecimal.RoundingMode.HALF_UP)))
+      case _ => Left("expected 4 columns")
+
 }
