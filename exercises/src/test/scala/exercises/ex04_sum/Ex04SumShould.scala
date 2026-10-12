@@ -22,6 +22,7 @@ class Ex04SumShould extends munit.FunSuite {
   }
 
   test("include a negative amount") {
+    
     // setup
 
     val amounts = List(BigDecimal("-1.50"), BigDecimal("2.00"))

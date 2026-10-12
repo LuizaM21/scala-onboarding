@@ -16,5 +16,12 @@ package exercises.ex06_discount
   * Hint: lesson 1 shows `match`.
   */
 object Discount {
-  def payable(status: String, amount: BigDecimal): BigDecimal = ???
+  def payable(status: String, amount: BigDecimal): BigDecimal =
+    status match
+    case "OPEN" if amount >= 100.00 => (amount * 0.9).setScale(2, BigDecimal.RoundingMode.HALF_UP)
+    case "OPEN" if amount < 100.00 => amount.setScale(2, BigDecimal.RoundingMode.HALF_UP)
+    case "PAID" if amount > 100.00 => amount.setScale(2, BigDecimal.RoundingMode.HALF_UP)
+    case "OVERDUE" => amount.setScale(2, BigDecimal.RoundingMode.HALF_UP)
+    case _ => amount.setScale(2, BigDecimal.RoundingMode.HALF_UP)
+
 }

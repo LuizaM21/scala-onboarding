@@ -13,6 +13,5 @@ import java.time.LocalDate
 object Due {
   def isOverdue(due: LocalDate, today: LocalDate): Boolean =
      if due.isBefore(today) then true
-      else if due.equals(today) then false
         else false
 }

@@ -9,5 +9,6 @@ package exercises.ex05_filter
   * Hint: lesson 2 `atLeast` is the same idea.
   */
 object Filters {
-  def atLeast(amounts: List[BigDecimal], limit: BigDecimal): List[BigDecimal] = ???
+  def atLeast(amounts: List[BigDecimal], limit: BigDecimal): List[BigDecimal] =
+    amounts.filter(_ >= limit)
 }
