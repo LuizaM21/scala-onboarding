@@ -16,8 +16,8 @@ class Ex12WriteTestShould extends munit.FunSuite {
   test("return a negative number when the due date is in the past") {
     // setup
 
-    val due = LocalDate.parse("2026-10-08")
-    val today = LocalDate.parse("2026-10-09")
+    val due = LocalDate.of(2026,10,8)
+    val today = LocalDate.of(2026,10,13)
 
     // execute
 
@@ -25,7 +25,7 @@ class Ex12WriteTestShould extends munit.FunSuite {
 
     // verify
 
-    assertEquals(days, -1L)
+    assertEquals(days, -5L)
   }
 
   test("return a positive number when the due date is in the future") {
@@ -59,11 +59,16 @@ class Ex12WriteTestShould extends munit.FunSuite {
   }
 
   // TODO: write this test. Delete `.ignore` when the body is ready.
-  test("return zero when the invoice is due today".ignore) {
+  test("return zero when the invoice is due today") {
     // setup
+    val due = LocalDate.of(2026,10,13)
+    val today = LocalDate.of(2026,10,13)
 
     // execute
+    val days = DueDate.daysUntilDue(due, today)
 
     // verify
+
+    assertEquals(days ,0L)
   }
 }
