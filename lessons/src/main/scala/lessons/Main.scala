@@ -6,6 +6,10 @@ import lessons.l03_case_classes_traits.Demo as TypesDemo
 import lessons.l04_option_either_errors.Demo as ErrorsDemo
 import lessons.l05_invoice_report.Demo as ReportDemo
 import lessons.l06_how_tests_work.Demo as TestsDemo
+import lessons.l08_solid.Demo as SolidDemo
+import lessons.l09_creational_structural.Demo as StructureDemo
+import lessons.l10_behavioural.Demo as BehaviourDemo
+import lessons.l11_putting_it_together.Demo as TogetherDemo
 
 /** `sbt "lessons/run"` lists lessons. `sbt "lessons/run 1"` runs one demo. */
 object Main {
@@ -16,7 +20,11 @@ object Main {
     4 -> ("errors — Option, Either, Try, validation", () => ErrorsDemo.run()),
     5 -> ("invoice report — CSV, rates, totals", () => ReportDemo.run()),
     6 -> ("how tests work — MUnit, assert, intercept", () => TestsDemo.run()),
-    7 -> ("Practice for lesson 1", () => BasicsDemo.runMyBasics())
+    7 -> ("Practice for lesson 1", () => BasicsDemo.runMyBasics()),
+    8 -> ("SOLID — five principles, each as before and after", () => SolidDemo.run()),
+    9 -> ("patterns I — Factory, Builder, Singleton, Adapter, Decorator", () => StructureDemo.run()),
+    10 -> ("patterns II — Strategy, Observer, Chain, State", () => BehaviourDemo.run()),
+    11 -> ("putting it together — layers, ports, and a use case", () => TogetherDemo.run())
   )
 
   def main(args: Array[String]): Unit = {
@@ -24,7 +32,7 @@ object Main {
       case None =>
         println("Lessons:")
         lessons.foreach { case (n, (title, _)) =>
-          println(s"  $n  $title")
+          println(f"  $n%2d  $title")
         }
         println()
         println("""Run one lesson: sbt "lessons/run 1"""")
@@ -34,7 +42,7 @@ object Main {
           case Some((_, (_, run))) => run()
           case None =>
             println(s"Unknown lesson: $raw")
-            println("Use a number from 1 to 7.")
+            println(s"Use a number from 1 to ${lessons.size}.")
         }
     }
   }
