@@ -100,6 +100,23 @@ Inside the test, three comments match a test case:
 | 5 Invoice report | `sbt "lessons/run 5"` | Exercise 11 |
 | 6 How tests work | `sbt "lessons/run 6"` | Exercise 12 |
 
+### Part 2 — writing code that is easy to change
+
+Part 1 taught the language. Part 2 is about design: how to shape code so it is easy to test,
+easy to change, and easy for the next person to read. Same invoices, same test style.
+
+Each lesson file shows a **Before** version and an **After** version. Read the Before first and ask:
+"How would I test this?" The answer is usually "with difficulty". The After fixes that.
+
+| Lesson | Run | Then do |
+|--------|-----|---------|
+| 8 SOLID | `sbt "lessons/run 8"` | Exercise 13, 14, 15, 16 |
+| 9 Creational and structural patterns | `sbt "lessons/run 9"` | Exercise 17, 18, 19 |
+| 10 Behavioural patterns | `sbt "lessons/run 10"` | Exercise 20, 21, 22, 23 |
+| 11 Putting it together | `sbt "lessons/run 11"` | Exercise 24 |
+
+One-page summary of every principle and pattern: [CHEATSHEET.md](CHEATSHEET.md).
+
 Details, files, and commands: [exercises/EXERCISES.md](exercises/EXERCISES.md).
 
 ## Try first
@@ -146,6 +163,13 @@ Save `Greet.scala`. The Ex01 tests run again. Press Enter to stop the watch.
 | assertion | A check inside a test. `assertEquals(actual, expected)`. |
 | compile | Turn Scala text into something the JVM can run. A compile error is not a failed test. |
 | `sbt` | The build tool. It compiles code and runs tests. |
+| principle | A rule of thumb for design. SOLID is five of them. Not a law. |
+| design pattern | A named, well-known shape for a common problem. "Adapter" says a lot in one word. |
+| dependency | Something your code needs to do its job: a clock, a database, an email server. |
+| port | A small trait that names a dependency. `Clock`, `Mailer`. |
+| fake | A test version of a dependency. A clock that always says 2026-10-09. |
+| contract test | One set of tests that every implementation of a trait must pass. |
+| refactor | Change the shape of code without changing what it does. Tests stay green. |
 
 ## Free reading
 
@@ -153,3 +177,6 @@ Save `Greet.scala`. The Ex01 tests run again. Press Enter to stop the watch.
 - [Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html)
 - [Scala Exercises](https://www.scala-exercises.org/)
 - [Rock the JVM](https://rockthejvm.com/) — free articles and YouTube lessons
+- [Refactoring Guru](https://refactoring.guru/design-patterns) — every pattern with pictures, and a list of code smells
+- *Clean Code* and *Clean Architecture* by Robert C. Martin — where the SOLID names come from
+- *Refactoring* by Martin Fowler — small safe steps, the idea behind exercise 24
