@@ -1,4 +1,5 @@
 package exercises.ex10_validate
+import scala.util.Try
 
 /** Check three fields. Stop at the first problem.
   *
@@ -19,5 +20,26 @@ package exercises.ex10_validate
   * Hint: `BigDecimal(text)` throws `NumberFormatException` on bad text. Catch it.
   */
 object Check {
-  def validate(number: String, supplier: String, total: String): Either[String, String] = ???
+
+  // One check per parameter. Each returns Right(valid value) or Left(message).
+  private def checkNumber(number: String): Either[String, String] =
+    Either.cond(number.trim.nonEmpty, number,"number is blank")
+
+  private def checkSupplier(supplier: String): Either[String, String] =
+    Either.cond(supplier.trim.nonEmpty, supplier.trim, "supplier is blank")
+
+  private def checkTotal(total: String): Either[String, String] =
+    Try(BigDecimal(total.trim)).toOption
+      .toRight("total is not a number")
+      .flatMap(t => Either.cond(t >= 0, t.toString(), "total is negative"))
+
+
+
+  def validate(number: String, supplier: String, total: String): Either[String, String] =
+      for n <- checkNumber(number)
+          _ <- checkSupplier(supplier)
+          _ <- checkTotal(total)
+      yield n
+
+
 }
