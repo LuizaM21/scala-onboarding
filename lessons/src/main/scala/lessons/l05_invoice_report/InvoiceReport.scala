@@ -56,7 +56,7 @@ case class Report(
   * 4. Sum by supplier and by status.
   */
 object InvoiceReport {
-  def parseRow(line: String, today: LocalDate): Either[String, Invoice] = {
+  private def parseRow(line: String, today: LocalDate): Either[String, Invoice] = {
     val parts = line.split(",", -1).map(_.trim)
     if (parts.length != 6) Left(s"expected 6 columns: $line")
     else
@@ -71,7 +71,7 @@ object InvoiceReport {
       )
   }
 
-  def toEur(invoice: Invoice, rates: Map[String, BigDecimal]): Option[BigDecimal] =
+  private def  toEur(invoice: Invoice, rates: Map[String, BigDecimal]): Option[BigDecimal] =
     rates.get(invoice.total.currency.toString).map { rate =>
       (invoice.total.amount * rate).setScale(2, RoundingMode.HALF_UP)
     }

@@ -2,7 +2,13 @@ package exercises.ex11_report
 
 import scala.util.Try
 
-case class CsvParser(number: String, supplier: String, currency: String, total: BigDecimal)
+case class 
+CsvParser(
+          number: String, 
+          supplier: String, 
+          currency: String, 
+          total: BigDecimal
+         )
 /** A tiny supplier report.
   *
   * Each line has 4 columns: number, supplier, currency, total.

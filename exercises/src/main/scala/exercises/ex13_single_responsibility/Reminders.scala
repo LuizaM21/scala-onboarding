@@ -45,7 +45,15 @@ case class DueRow(number: String, supplier: String, dueDate: LocalDate)
 
 /** Job 1: read one CSV line. */
 object DueCsv {
-  def parse(line: String): Option[DueRow] = ???
+  def parse(line: String): Option[DueRow] =
+    line.split(",").toList.map(_.trim).toList match {
+      case List(number, supplier, dueDate) => 
+        Try(LocalDate.parse(dueDate)).toOption
+          .map(date => DueRow(number, supplier, date))
+      case _ => None
+      
+    }
+    
 }
 
 /** Job 2: the business rule. */
